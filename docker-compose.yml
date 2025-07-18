@@ -20,21 +20,21 @@ services:
     depends_on:
       - db
 
-  # frontend:
-  #   build: 
-  #     context: .
-  #     dockerfile: ./frontend/Dockerfile
-  #   container_name: frontend
-  #   ports:
-  #     - "3000:3000"
-  #   volumes:
-  #     - ./frontend:/app
-  #     - /app/node_modules
-  #   working_dir: /app
-  #   command: >
-  #     /bin/bash -c "/usr/local/bin/wait_for_it.sh backend:5000 -- npm start"
-  #   depends_on:
-  #     - backend
+  frontend:
+    build: 
+      context: .
+      dockerfile: ./frontend/Dockerfile
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - node_modules_frontend:/app/node_modules
+    working_dir: /app
+    command: >
+      /bin/bash -c "/usr/local/bin/wait_for_it.sh backend:5000 -- npm install && npm run dev -- --host 0.0.0.0"
+    depends_on:
+      - backend
   
   db:
     image: mysql:8.0
@@ -52,3 +52,4 @@ services:
 
 volumes:
   mysql_data:
+  node_modules_frontend:

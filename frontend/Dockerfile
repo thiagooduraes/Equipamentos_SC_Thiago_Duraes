@@ -1,14 +1,10 @@
-FROM node:18-alpine
+FROM node:20-alpine
 
 WORKDIR /app
 
 COPY ./frontend/package.json ./frontend/yarn.lock* ./
 
 RUN npm install
-
-RUN ls -l node_modules/.bin/react-scripts
-RUN ls -l node_modules/react-scripts/bin/react-scripts.js
-RUN echo $PATH
 
 RUN apk add --no-cache netcat-openbsd bash
 
