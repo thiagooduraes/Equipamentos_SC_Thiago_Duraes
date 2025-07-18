@@ -1,0 +1,26 @@
+nome,tipo_maquina_id,status
+Prensa Verstappen,1,true
+Prensa Hamilton,1,false
+Prensa Leclerc,1,true
+Prensa Norris,1,true
+Prensa Sainz,1,false
+Torno Alonso,2,true
+Torno Piastri,2,true
+Torno Ricciardo,2,false
+Torno Bottas,2,true
+Torno Tsunoda,2,false
+Injetora Vettel,3,true
+Injetora Gasly,3,true
+Injetora Perez,3,false
+Injetora Hulkenberg,3,true
+Injetora Magnussen,3,false
+Fresadora Russell,4,true
+Fresadora Stroll,4,false
+Fresadora Ocon,4,true
+Fresadora Zhou,4,true
+Fresadora Albon,4,false
+Empacotadora Schumacher,5,true
+Empacotadora De Vries,5,false
+Empacotadora Logan,5,true
+Empacotadora Bearman,5,true
+Empacotadora Doohan,5,false

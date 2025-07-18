@@ -1,0 +1,54 @@
+services:
+  backend:
+    
+    build: 
+      context: .
+      dockerfile: ./backend/Dockerfile
+    container_name: backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+    working_dir: /app
+    command: >
+      /bin/bash -c "/usr/local/bin/wait_for_it.sh db:3306 -- python run.py"
+    environment:
+      FLASK_APP: app
+      FLASK_ENV: development
+      DATABASE_URL: mysql+pymysql://user:password@db:3306/equipamentos
+    restart: unless-stopped
+    depends_on:
+      - db
+
+  # frontend:
+  #   build: 
+  #     context: .
+  #     dockerfile: ./frontend/Dockerfile
+  #   container_name: frontend
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - ./frontend:/app
+  #     - /app/node_modules
+  #   working_dir: /app
+  #   command: >
+  #     /bin/bash -c "/usr/local/bin/wait_for_it.sh backend:5000 -- npm start"
+  #   depends_on:
+  #     - backend
+  
+  db:
+    image: mysql:8.0
+    container_name: myapp-mysql-db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: equipamentos
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: unless-stopped
+
+volumes:
+  mysql_data:
