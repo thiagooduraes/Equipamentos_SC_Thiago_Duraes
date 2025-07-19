@@ -1,94 +1,70 @@
 # Equipamentos_SC_Thiago_Duraes
-Desafio técnico em python-react-mysql-docker para empresa de SC
----
 
-## **Tecnologias Utilizadas**
-
-* **Backend:** Python (Flask, SQLAlchemy)
-* **Frontend:** React (com Material-UI - MUI)
-* **Banco de Dados:** MySQL 8.0
-* **Containerização:** Docker e Docker Compose
+Desafio técnico python-react-mysql-docker API
 
 ---
 
-## **Objetivos**
+## **Objetivo**
 
-* Desenvolver um sistema completo para o gerenciamento de máquinas e seus tipos.
-* Proporcionar uma interface de usuário intuitiva e responsiva utilizando o Material-UI (MUI).
-* Garantir a persistência e integridade dos dados através de um banco de dados MySQL.
-* Facilitar a implantação e o desenvolvimento utilizando Docker para isolamento e padronização do ambiente.
+* Desenvolver uma API REST para o gerenciamento e monitoramento de máquinas industriais.
+* Utilizar Python Flask para o backend
+* Desenvolver um frontend com um framework de preferência (opcional)
+* Utilizar MySQL, SQLite ou MongoDB como banco de dados
+
+---
+
+## **Configurações do ambiente**
+
+* Python 3.11 (Flask, SQLAlchemy)
+* React 19.1.0 (com Material-UI - MUI)
+* MySQL 8.0
+* Docker
+* Postman (testes)
 
 ---
 
 ## **Funcionalidades**
 
-### **Módulo de Máquinas**
-A aplicação permite o gerenciamento completo das máquinas, incluindo:
-* **Listagem de Máquinas:** Visualização de todos os registros de máquinas.
-* **Cadastro de Nova Máquina:** Inserção de novas máquinas no sistema.
-* **Edição de Máquina:** Atualização de informações de máquinas existentes.
-* **Exclusão de Máquina:** Remoção de registros de máquinas.
-* **Controle de Status:** Cada máquina possui um status (ativo/inativo) que pode ser alterado.
-* **Registro de Última Alteração:** O sistema registra automaticamente a data e hora da última alteração de status de uma máquina.
-* **Associação com Tipos de Máquina:** Cada máquina é associada a um tipo de máquina existente.
+* **Tipos de Máquina:** Categoriza as máquinas monitoradas pelo sistema.
 
-### **Módulo de Tipos de Máquina**
-Para categorizar as máquinas, o sistema oferece gerenciamento dos tipos:
-* **Listagem de Tipos de Máquina:** Visualização de todos os tipos de máquina cadastrados.
-* **Cadastro de Novo Tipo:** Inserção de novas categorias de máquinas.
-* **Edição de Tipo:** Atualização de descrições de tipos existentes.
-* **Exclusão de Tipo:** Remoção de categorias de máquina (respeitando a integridade de máquinas associadas).
+* **Máquinas:** Representa as máquinas monitoradas pelo sistema, permitindo seu gerenciamento e atualização de status (Ativo ou Inativo).
 
-### **Navegação e Interface**
-* **Página Inicial Genérica:** Uma tela de boas-vindas inicial.
-* **Barra de Navegação:** Links claros para as telas de gerenciamento de Máquinas e Tipos de Máquina.
-* **Material-UI (MUI):** Utilizado para todos os componentes da interface, garantindo um design moderno e padronizado.
+* **Atualização de Status:** Ao modificar o status de uma máquina, é atualizada a informação de última alteração.
+
+* **Navegação e Interface:** Permite o usuário interagir com o sistema.
+
+* **Testes Automatizados:** Permite o teste das funcionalidades da API de forma mais simples.
 
 ---
 
-## **Requisitos de Ambiente**
+## **Utilização**
 
-Para executar este sistema, você precisará ter os seguintes softwares instalados:
+* Para simplificar o uso do sistema, foi utilizado o Docker durante a implementação, sendo necessário que o Docker esteja instalado no ambiente.
 
-* **Docker:** Recomendado a versão mais recente para Docker Desktop.
-    * [Download Docker Desktop](https://www.docker.com/products/docker-desktop/)
-* **Git:** Para clonar o repositório.
+* Foi utilizado o Docker na versão 4.43.2. A versão mais recente pode ser obtido através do site:
 
----
+        https://www.docker.com/products/docker-desktop/
 
-## **Configuração e Utilização**
+* Após clonar o repositório e certificar de que o docker esteja em execução, basta executar os comando abaixo para inicializar o sistema:
 
-### **1. Clonar o Repositório**
-Abra seu terminal e clone o repositório para o seu ambiente local:
-```bash
-git clone <URL_DO_SEU_REPOSITORIO>
-cd <nome_da_pasta_do_projeto> # Navegue para a pasta raiz do projeto clonado
+        docker-compose up -d --build
 
-2. Iniciar o Sistema com Docker Compose
-Com o Docker em execução na sua máquina, navegue até o diretório raiz do projeto (onde o arquivo docker-compose.yml está localizado) e execute o comando abaixo para construir as imagens e iniciar todos os serviços (backend, frontend, banco de dados):
+* Foi utilizado o Postman para executar os testes da API. A versão mais recente pode ser obtido através do site:
 
-Bash
+        https://www.postman.com/downloads/
 
-docker compose up -d --build
-O comando npm install será executado automaticamente no container frontend na primeira vez, o que pode levar alguns minutos. Tenha paciência.
+* Os testes foram exportados para o arquivo TESTES_API_Thiago.postman_collection.json. Para executá-los, use a opção *import* do Postman e siga os passos realizados no vídeo:
 
-O script wait_for_it.sh será utilizado para garantir que os serviços estejam prontos antes que as aplicações tentem se conectar a eles.
+        https://youtu.be/F04KDXhrQms
 
-3. Acessar a Aplicação
-Após a inicialização dos serviços, a aplicação web estará acessível em seu navegador através do seguinte endereço:
+* A interface do sistema pode ser acessada pelo link
 
-http://localhost:3000/
-4. Parar a Execução do Sistema
-Para parar todos os serviços e os containers Docker associados ao projeto:
+        =localhost:3000/
 
-Bash
+* Para parar a execução do Docker:
+    
+        docker-compose down
 
-docker compose down
-5. Limpar o Ambiente (Opcional)
-Caso deseje parar a execução, remover os contêineres, redes, volumes (incluindo dados do MySQL) e imagens Docker associadas a este projeto, utilize o comando:
+* Caso deseje parar a execução e excluir os contêineres, redes, volumes e imagens associadas ao docker deste projeto, utilize o comando:
 
-Bash
-
-docker compose down --volumes --rmi all
-docker system prune -a --volumes # Confirme com 'y' quando solicitado
-Atenção: Este comando apagará os dados do banco de dados e todas as imagens Docker relacionadas. Use com cautela!
+        docker-compose down --volumes --rmi all
