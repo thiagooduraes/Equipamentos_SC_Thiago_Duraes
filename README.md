@@ -45,7 +45,7 @@ Desafio técnico python-react-mysql-docker API
 
         https://www.docker.com/products/docker-desktop/
 
-* Após clonar o repositório e certificar de que o docker esteja em execução, basta executar os comando abaixo para inicializar o sistema:
+* Após clonar o repositório e certificar de que o docker esteja em execução, basta executar o comando abaixo para inicializar o sistema (essa etapa pode demorar):
 
         docker-compose up -d --build
 
@@ -53,7 +53,7 @@ Desafio técnico python-react-mysql-docker API
 
         https://www.postman.com/downloads/
 
-* Os testes foram exportados para o arquivo TESTES_API_Thiago.postman_collection.json. Para executá-los, use a opção *import* do Postman e siga os passos realizados no vídeo:
+* Os testes foram exportados para o arquivo TESTES_API_Thiago.postman_collection.json. Para executá-los, use a opção *import* do Postman, criar um novo *enviroment* (parte superior direita da janela) e seguir os passos realizados no vídeo:
 
         https://youtu.be/F04KDXhrQms
 
